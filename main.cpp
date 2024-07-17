@@ -261,23 +261,11 @@ int main(int argc, const char* argv[]){
 	std::string command = "rm -rf ";
 	command += dsym_dir;
 
-    if (std::remove(exe_file) == 0) {
-        std::cout << "Executable deleted successfully.\n";
-    } else {
-        std::cerr << "Error deleting the executable.\n";
-    }
+   	std::remove(exe_file);
 
-    if (std::remove(ds_store) == 0) {
-        std::cout << ".dStore deleted successfully.\n";
-    } else {
-        std::cerr << "Error deleting the executable.\n";
-    }
+    std::remove(ds_store); 
 
-    if (system(command.c_str()) == 0) {
-        std::cout << ".dSYM directory deleted successfully.\n";
-    } else {
-        std::cerr << "Error deleting the .dSYM directory.\n";
-    }
-	
+    system(command.c_str());
+
 	return 0;
 }

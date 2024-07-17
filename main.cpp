@@ -256,10 +256,19 @@ int main(int argc, const char* argv[]){
 
 	const char* exe_file = "rbt_sim";
 	const char* dsym_dir = "rbt_sim.dSYM";
+	const char* ds_store = ".DS_Store";
+
 	std::string command = "rm -rf ";
 	command += dsym_dir;
+
     if (std::remove(exe_file) == 0) {
         std::cout << "Executable deleted successfully.\n";
+    } else {
+        std::cerr << "Error deleting the executable.\n";
+    }
+
+    if (std::remove(ds_store) == 0) {
+        std::cout << ".dStore deleted successfully.\n";
     } else {
         std::cerr << "Error deleting the executable.\n";
     }

@@ -1,6 +1,6 @@
 ---
 triple:          'arm64-apple-darwin'
-binary-path:     new_rbt
+binary-path:     rbt_sim
 relocations:
   - { offsetInCU: 0x39, offset: 0x39, size: 0x8, addend: 0x0, symName: __ZN4Tree3rbtE, symObjAddr: 0x216C, symBinAddr: 0x10000C000, symSize: 0x0 }
   - { offsetInCU: 0x51D, offset: 0x51D, size: 0x8, addend: 0x0, symName: __ZN4Tree7verboseE, symObjAddr: 0x2392F, symBinAddr: 0x10000C001, symSize: 0x0 }

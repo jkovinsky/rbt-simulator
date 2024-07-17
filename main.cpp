@@ -253,6 +253,22 @@ int main(int argc, const char* argv[]){
 	}
 
 	Py_Finalize();
+
+	const char* exe_file = "rbt_sim";
+	const char* dsym_dir = "rbt_sim.dSYM";
+	std::string command = "rm -rf ";
+	command += dsym_dir;
+    if (std::remove(exe_file) == 0) {
+        std::cout << "Executable deleted successfully.\n";
+    } else {
+        std::cerr << "Error deleting the executable.\n";
+    }
+
+    if (system(command.c_str()) == 0) {
+        std::cout << ".dSYM directory deleted successfully.\n";
+    } else {
+        std::cerr << "Error deleting the .dSYM directory.\n";
+    }
 	
 	return 0;
 }

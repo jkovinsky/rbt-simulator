@@ -289,18 +289,6 @@ int main(int argc, const char* argv[]){
 
 	Py_Finalize();
 
-	const char* exe_file = "rbt";
-	const char* dsym_dir = "rbt.dSYM";
-	const char* ds_store = ".DS_Store";
-
-	std::string command = "rm -rf ";
-	command += dsym_dir;
-
-   	// std::remove(exe_file);
-
-    // std::remove(ds_store); 
-
-    // system(command.c_str());
 
 	return 0;
 }

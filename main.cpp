@@ -300,7 +300,7 @@ int main(int argc, const char* argv[]){
 
     // std::remove(ds_store); 
 
-    system(command.c_str());
+    // system(command.c_str());
 
 	return 0;
 }

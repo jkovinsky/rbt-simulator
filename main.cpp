@@ -33,7 +33,7 @@ void showStats(auto tms)
 
 int main(int argc, const char* argv[]){
 	
-	std::cout << ">";
+	std::cout << "rbt>";
 	Py_Initialize();
 
 	srand(4);
@@ -80,7 +80,7 @@ int main(int argc, const char* argv[]){
 			{
 				Tree::rbt = true;
 				rb_tr.print();
-				std::cout << ">";
+				std::cout << "rbt>";
 			}
 			if (action == ".print -bst")
 			{
@@ -119,7 +119,7 @@ int main(int argc, const char* argv[]){
 					bs_tr.insert(data[i]);
 					bst_times.push_back(tm.tock());
 				}
-				std::cout << ">";
+				std::cout << "rbt>";
 				break; 
 			}
 			if (action == ".erase")
@@ -130,7 +130,7 @@ int main(int argc, const char* argv[]){
 				tm.tick();
 				rb_tr.erase(rb_tr.find(val));
 				tm.tock();
-				std::cout << ">";
+				std::cout << "rbt>";
 			}
 			if (action == ".avg")
 			{
@@ -144,7 +144,7 @@ int main(int argc, const char* argv[]){
 					std::cout << rbt_times[i] << ' ';
 				}
 				std::cout << '\n';
-				std::cout << ">";
+				std::cout << "rbt>";
 			}
 			
 			if (action == ".compare")
@@ -163,7 +163,7 @@ int main(int argc, const char* argv[]){
 				{
 					rbt_trees[i].print();
 				}
-				std::cout << ">";
+				std::cout << "rbt>";
 			}
 
 			if (action == ".sim")
@@ -192,7 +192,7 @@ int main(int argc, const char* argv[]){
 				}
 				sim_rbt_times.insert({key, temp_rbt_times});
 				sim_bst_times.insert({key, temp_bst_times});
-				std::cout << ">";
+				std::cout << "rbt>";
 			}
 			if (action == ".write")
 			{
@@ -268,7 +268,7 @@ int main(int argc, const char* argv[]){
 				}
 				bstFile_sim.close();
 
-				std::cout << ">";
+				std::cout << "rbt>";
 			}
 			if (action == ".plot")
 			{
@@ -278,7 +278,7 @@ int main(int argc, const char* argv[]){
 				{
 					PyRun_SimpleFile(fp, "plot.py");
 				}
-				std::cout << ">";
+				std::cout << "rbt>";
 			}
 
 		}

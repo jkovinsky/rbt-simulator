@@ -33,9 +33,16 @@ if __name__ == "__main__":
     rbt_sim = convert_to_time([s.split(',') for s in rbt_sim])
     bst_sim = convert_to_time([s.split(',') for s in bst_sim])
 
-    print(np.mean(rbt_sim, axis=1))
-    print(np.mean(bst_sim, axis=1))
+    num_sim = len(rbt_sim)
+    search_alg = ["Red-Black", "Binary-Search"]
+    rbt_sim_means = np.mean(rbt_sim, axis=1)
+    bst_sim_means = np.mean(bst_sim, axis=1)
+    alg_means = {}
 
+    for i in range(num_sim):
+        alg_means.update({f"sim-{i}" : [rbt_sim_means[i], bst_sim_means[i]]})
+    
+    print(alg_means)
 
     plt.figure(1)
     plt.plot(rbt_rt, color = 'r')

@@ -1,5 +1,9 @@
-PYTHON_INCLUDE = $(shell python3.12-config --includes)
-PYTHON_LDFLAGS = $(shell python3.12-config --ldflags)
+PYTHON_CFLAGS = $(shell python3.12-config --cflags)
+PYTHON_LFLAGS = $(shell python3.12-config --ldflags --embed)
 
-rbt-simulator: rbt.hpp rbt.cpp main.cpp
-	g++ -std=c++2a -O3 -Wall -Wextra -g -o rbt_sim rbt.cpp main.cpp $(PYTHON_INCLUDE) $(PYTHON_LDFLAGS) -lpython3.12
+rbt: main.cpp rbt.cpp rbt.hpp
+	g++ -std=c++2a -O3 -Wall -Wextra -g $(PYTHON_CFLAGS) -o rbt main.cpp rbt.cpp $(PYTHON_LFLAGS)
+
+
+
+

@@ -20,8 +20,9 @@ if __name__ == "__main__":
     with open('output/rbt_sim.txt', 'r') as bst_file:
         bst_sim = bst_file.read().splitlines()
 
-    print(rbt_sim[0])
-    # print(bst_sim)
+    rbt_sim_rf = []
+    for idx, s in enumerate(rbt_sim):
+        rbt_sim_rf.append(s.split(','))
 
     rbt_rt = convert_to_time(rbt_rt)
     bst_rt = convert_to_time(bst_rt)

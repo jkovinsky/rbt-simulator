@@ -289,8 +289,8 @@ int main(int argc, const char* argv[]){
 
 	Py_Finalize();
 
-	const char* exe_file = "rbt_sim";
-	const char* dsym_dir = "rbt_sim.dSYM";
+	const char* exe_file = "rbt";
+	const char* dsym_dir = "rbt.dSYM";
 	const char* ds_store = ".DS_Store";
 
 	std::string command = "rm -rf ";

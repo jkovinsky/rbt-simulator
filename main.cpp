@@ -174,7 +174,7 @@ int main(int argc, const char* argv[]){
 				for(int i = 0; i < 1000; ++i)
 				{
 					int rand_num = rand() % 100000;
-					// auto rand_num = rand();
+					
 					Tree::rbt = true;
 					tm.tick();
 					rb_tr.insert(rand_num);

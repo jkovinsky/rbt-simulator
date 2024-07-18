@@ -14,6 +14,15 @@ if __name__ == "__main__":
     with open("output/bst_runtime.txt", 'r') as bst_file:
         bst_rt = bst_file.read().split(',')
 
+    with open('output/rbt_sim.txt', 'r') as rbt_file:
+        rbt_sim = rbt_file.read().splitlines()
+
+    with open('output/rbt_sim.txt', 'r') as bst_file:
+        bst_sim = bst_file.read().splitlines()
+
+    print(rbt_sim[0])
+    # print(bst_sim)
+
     rbt_rt = convert_to_time(rbt_rt)
     bst_rt = convert_to_time(bst_rt)
 

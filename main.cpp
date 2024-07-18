@@ -208,18 +208,29 @@ int main(int argc, const char* argv[]){
 				}
 				rbtFile_rt.close();
 
-				// std::ofsteam rbtFile_sim;
-				// rbtFile_sim.open ("output/rbt_sim.txt");
+				std::ofstream rbtFile_sim;
+				rbtFile_sim.open ("output/rbt_sim.txt");
+
 				for(auto m = sim_rbt_times.begin(); m != sim_rbt_times.end(); ++m)
 				{
 					auto temp = m->second;
 					for(size_t i = 0; i < temp.size(); ++i)
 					{
-						std::cout << temp[i] << ' ';
+						rbtFile_sim << temp[i];
+
+						if(i != temp.size() - 1)
+						{
+							rbtFile_sim << ',';
+						}
+
+						if(i == temp.size() - 1)
+						{
+							rbtFile_sim << '\n';
+						}
 					}
-					
+			
 				}
-				// rbtFile_sim.close();
+				rbtFile_sim.close();
 
 				std::ofstream bstFile_rt;
 				bstFile_rt.open ("output/bst_runtime.txt");
@@ -232,6 +243,30 @@ int main(int argc, const char* argv[]){
 					}
 				}
 				bstFile_rt.close();
+
+				std::ofstream bstFile_sim;
+				bstFile_sim.open ("output/bst_sim.txt");
+
+				for(auto m = sim_bst_times.begin(); m != sim_bst_times.end(); ++m)
+				{
+					auto temp = m->second;
+					for(size_t i = 0; i < temp.size(); ++i)
+					{
+						bstFile_sim << temp[i];
+
+						if(i != temp.size() - 1)
+						{
+							bstFile_sim << ',';
+						}
+
+						if(i == temp.size() - 1)
+						{
+							bstFile_sim << '\n';
+						}
+					}
+			
+				}
+				bstFile_sim.close();
 
 				std::cout << ">";
 			}

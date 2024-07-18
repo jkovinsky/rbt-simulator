@@ -296,9 +296,9 @@ int main(int argc, const char* argv[]){
 	std::string command = "rm -rf ";
 	command += dsym_dir;
 
-   	std::remove(exe_file);
+   	// std::remove(exe_file);
 
-    std::remove(ds_store); 
+    // std::remove(ds_store); 
 
     system(command.c_str());
 

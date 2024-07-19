@@ -76,12 +76,13 @@ if __name__ == "__main__":
     ax.set_xticks(x + 0.125, sim_i)
     ax.legend(loc='upper left', ncols=2)
     ax.set_ylim(0, 1)
-    plt.savefig('./plots/Sim-Avg.jpg')
+    plt.savefig('./plots/Bar-Sim-Avg.jpg')
 
     plt.figure(4)
     for alg, avg_time in alg_means.items():
         plt.plot(avg_time, label = alg)
     plt.xticks(np.arange(num_sim))
+    plt.savefig('./plots/Line-Sim-Avg.jpg')
 
     plt.show()
 

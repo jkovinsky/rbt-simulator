@@ -35,17 +35,7 @@ if __name__ == "__main__":
     rbt_sim = convert_time([s.split(',') for s in rbt_sim])
     bst_sim = convert_time([s.split(',') for s in bst_sim])
 
-    num_sim = len(rbt_sim)
-    search_alg = ["Red-Black", "Binary-Search"]
-    rbt_sim_means = np.mean(rbt_sim, axis=1)
-    bst_sim_means = np.mean(bst_sim, axis=1)
-    alg_means = {}
-
-    for i in range(num_sim):
-        alg_means.update({f"sim-{i}" : [rbt_sim_means[i], bst_sim_means[i]]})
     
-    print(alg_means)
-
     plt.figure(1)
     plt.plot(rbt_rt, color = 'r')
     plt.title('Fig 1: Plot of Red-Black Insertion Speed')
@@ -60,6 +50,33 @@ if __name__ == "__main__":
     plt.ylabel('μs')
     plt.savefig('./plots/Binary_Search_time.jpg')
 
+    num_sim = len(rbt_sim)
+    sim_i = [f"sim-{i}" for i in range(len(rbt_sim))]
+    rbt_sim_means = np.mean(rbt_sim, axis=1)
+    bst_sim_means = np.mean(bst_sim, axis=1)
+    alg_means = {
+        "Red-Black" : rbt_sim_means,
+        "Binary-Search" : bst_sim_means
+    }
+
+    x = np.arange(len(rbt_sim_means))
+    width = 0.25
+    multiplier = 0
+
+    fig, ax = plt.subplots(layout='constrained')
+
+    for alg, avg_time in alg_means.items():
+        offset = width * multiplier
+        rects = ax.bar(x + offset, avg_time, width, label=alg)
+        ax.bar_label(rects, padding=3)
+        multiplier += 1
+
+    ax.set_ylabel('μs')
+    ax.set_title('Fig 3: Average insertion speed\nby search algorithm per simulation')
+    ax.set_xticks(x + 0.125, sim_i)
+    ax.legend(loc='upper left', ncols=2)
+    ax.set_ylim(0, 0.7)
+    plt.savefig('./plots/Sim-Avg.jpg')
 
 
     plt.show()

@@ -51,7 +51,7 @@ if __name__ == "__main__":
     plt.savefig('./plots/Binary_Search_time.jpg')
 
     num_sim = len(rbt_sim)
-    sim_i = [f"sim-{i}" for i in range(len(rbt_sim))]
+    sim_i = [f"sim-{i+1}" for i in range(len(rbt_sim))]
     rbt_sim_means = np.mean(rbt_sim, axis=1)
     bst_sim_means = np.mean(bst_sim, axis=1)
     alg_means = {

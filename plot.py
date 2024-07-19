@@ -1,17 +1,19 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def convert_to_time(t_str, pos=0):
-    if pos == len(t_str):
-        return np.array(t_str, dtype = float)
+def convert_time_helper(t_str):
+    return np.array([float(time[:-2]) for time in t_str], dtype = float)
 
-    if not isinstance(t_str[pos], list):
-        t_num = [float(time[:-2]) for time in t_str]
-        return np.array(t_num, dtype = float)
+def convert_time(tms, pos=0):
+    if pos == len(tms):
+        return tms
 
+    if isinstance(tms[pos], list):
+        tms[pos] = convert_time_helper(tms[pos])
+        return convert_time(tms, pos+1)
     else:
-        t_str[pos] = [float(time[:-2]) for time in t_str[pos]]
-        return convert_to_time(t_str, pos+1)
+        return convert_time_helper(tms)
+
 
 if __name__ == "__main__":
     
@@ -27,11 +29,11 @@ if __name__ == "__main__":
         bst_sim = bst_file_sim.read().splitlines()
 
 
-    rbt_rt = convert_to_time(rbt_rt)
-    bst_rt = convert_to_time(bst_rt)
+    rbt_rt = convert_time(rbt_rt)
+    bst_rt = convert_time(bst_rt)
 
-    rbt_sim = convert_to_time([s.split(',') for s in rbt_sim])
-    bst_sim = convert_to_time([s.split(',') for s in bst_sim])
+    rbt_sim = convert_time([s.split(',') for s in rbt_sim])
+    bst_sim = convert_time([s.split(',') for s in bst_sim])
 
     num_sim = len(rbt_sim)
     search_alg = ["Red-Black", "Binary-Search"]

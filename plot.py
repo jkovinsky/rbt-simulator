@@ -40,14 +40,14 @@ if __name__ == "__main__":
     plt.plot(np.log(rbt_rt), color = 'r')
     plt.title('Fig 1: Plot of Red-Black Insertion Speed')
     plt.xlabel('Insertion')
-    plt.ylabel('μs')
+    plt.ylabel('log μs')
     plt.savefig('./plots/Red_Black_log-time.jpg')
 
     plt.figure(2)
     plt.plot(np.log(bst_rt), color = 'b')
     plt.title('Fig 2: Plot of Binary-Search Insertion Speed')
     plt.xlabel('Insertion')
-    plt.ylabel('μs')
+    plt.ylabel('log μs')
     plt.savefig('./plots/Binary_Search_log-time.jpg')
 
     num_sim = len(rbt_sim)

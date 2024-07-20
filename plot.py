@@ -67,21 +67,30 @@ if __name__ == "__main__":
 
     for alg, avg_time in alg_means.items():
         offset = width * multiplier
-        rects = ax.bar(x + offset, avg_time, width, label=alg)
-        ax.bar_label(rects, padding=3)
+        if alg == 'Red-Black':
+            color='r'
+        else:
+            color='b'
+        rects = ax.bar(x + offset, avg_time, width, color=color, label=alg)
         multiplier += 1
 
     ax.set_ylabel('μs')
     ax.set_title('Fig 3: Average insertion speed by search algorithm')
     ax.set_xticks(x + 0.125, sim_i)
     ax.legend(loc='upper left', ncols=2)
-    ax.set_ylim(0, 1)
     plt.savefig('./plots/Sim_Avg_group.jpg')
 
     plt.figure(4)
     for alg, avg_time in alg_means.items():
-        plt.plot(avg_time, label = alg)
-    plt.xticks(np.arange(num_sim))
+        if alg == 'Red-Black':
+            color='r'
+        else:
+            color='b'
+        plt.plot(avg_time, color=color, label = alg)
+    plt.xticks(np.arange(num_sim), sim_i)
+    plt.legend(loc='upper left')
+    plt.ylabel('μs')
+
     plt.savefig('./plots/Sim_Avg_line.jpg')
 
     plt.show()

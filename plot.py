@@ -37,18 +37,18 @@ if __name__ == "__main__":
 
     
     plt.figure(1)
-    plt.plot(rbt_rt, color = 'r')
+    plt.plot(np.log(rbt_rt), color = 'r')
     plt.title('Fig 1: Plot of Red-Black Insertion Speed')
     plt.xlabel('Insertion')
     plt.ylabel('μs')
-    plt.savefig('./plots/Red_Black_time.jpg')
+    plt.savefig('./plots/Red_Black_log-time.jpg')
 
     plt.figure(2)
-    plt.plot(bst_rt, color = 'b')
+    plt.plot(np.log(bst_rt), color = 'b')
     plt.title('Fig 2: Plot of Binary-Search Insertion Speed')
     plt.xlabel('Insertion')
     plt.ylabel('μs')
-    plt.savefig('./plots/Binary_Search_time.jpg')
+    plt.savefig('./plots/Binary_Search_log-time.jpg')
 
     num_sim = len(rbt_sim)
     sim_i = [f"sim-{i+1}" for i in range(len(rbt_sim))]
@@ -72,17 +72,17 @@ if __name__ == "__main__":
         multiplier += 1
 
     ax.set_ylabel('μs')
-    ax.set_title('Fig 3: Average insertion speed\nby search algorithm per simulation')
+    ax.set_title('Fig 3: Average insertion speed by search algorithm')
     ax.set_xticks(x + 0.125, sim_i)
     ax.legend(loc='upper left', ncols=2)
     ax.set_ylim(0, 1)
-    plt.savefig('./plots/Bar-Sim-Avg.jpg')
+    plt.savefig('./plots/Sim_Avg_group.jpg')
 
     plt.figure(4)
     for alg, avg_time in alg_means.items():
         plt.plot(avg_time, label = alg)
     plt.xticks(np.arange(num_sim))
-    plt.savefig('./plots/Line-Sim-Avg.jpg')
+    plt.savefig('./plots/Sim_Avg_line.jpg')
 
     plt.show()
 

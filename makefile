@@ -7,7 +7,7 @@ rbt: main.cpp rbt.cpp rbt.hpp
 .PHONY: clean
 
 clean:
-	@rm -f rbt main.o rbt.o .DS_Store
+	@rm -f rbt main.o rbt.o .DS_Store ./plots/.DS_store
 	@rm -r rbt.dSYM
 
 

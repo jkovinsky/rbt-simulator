@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def convert_time_helper(t_str):
+def convert_time_helper(t_str, idx=0):
     return np.array([float(time[:-2]) for time in t_str], dtype = float)
 
 def convert_time(tms, pos=0):
@@ -35,15 +35,15 @@ if __name__ == "__main__":
     rbt_sim = convert_time([s.split(',') for s in rbt_sim])
     bst_sim = convert_time([s.split(',') for s in bst_sim])
 
-    
-    plt.figure(1)
+
+    plt.figure(1, figsize=(num_sim/1.5,5), layout='constrained')
     plt.plot(np.log(rbt_rt), color = 'r')
     plt.title('Fig 1: Plot of Red-Black Insertion Speed')
     plt.xlabel('Insertion')
     plt.ylabel('log μs')
     plt.savefig('./plots/Red_Black_log-time.jpg')
 
-    plt.figure(2)
+    plt.figure(2, figsize=(num_sim/1.5,5), layout='constrained')
     plt.plot(np.log(bst_rt), color = 'b')
     plt.title('Fig 2: Plot of Binary-Search Insertion Speed')
     plt.xlabel('Insertion')
@@ -63,7 +63,7 @@ if __name__ == "__main__":
     width = 0.25
     multiplier = 0
 
-    fig, ax = plt.subplots(layout='constrained')
+    fig, ax = plt.subplots(figsize=(num_sim/1.5,5),layout='constrained')
 
     for alg, avg_time in alg_means.items():
         offset = width * multiplier
@@ -80,7 +80,7 @@ if __name__ == "__main__":
     ax.legend(loc='upper left', ncols=2)
     plt.savefig('./plots/Sim_Avg_group.jpg')
 
-    plt.figure(4)
+    plt.figure(4, figsize=(num_sim/1.5,5), layout = 'constrained')
     for alg, avg_time in alg_means.items():
         if alg == 'Red-Black':
             color='r'

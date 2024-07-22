@@ -67,7 +67,7 @@ if __name__ == "__main__":
     bst_sim = convert_time([s.split(',') for s in bst_sim])
 
     # ========= Fig 1: Plot of Red-Black Insertion Speed ========= # 
-    plt.figure(1, figsize=(num_sim/1.5,5), layout='constrained')
+    plt.figure(1, layout='constrained')
     plt.plot(np.log(rbt_rt), color = 'r')
     plt.title('Fig 1: Plot of Red-Black Insertion Speed')
     plt.xlabel('Insertion')
@@ -75,7 +75,7 @@ if __name__ == "__main__":
     plt.savefig('./plots/Red_Black_log-time.jpg')
 
     # ======= Fig 2: Plot of Binary-Search Insertion Speed ======= # 
-    plt.figure(2, figsize=(num_sim/1.5,5), layout='constrained')
+    plt.figure(2, layout='constrained')
     plt.plot(np.log(bst_rt), color = 'b')
     plt.title('Fig 2: Plot of Binary-Search Insertion Speed')
     plt.xlabel('Insertion')
@@ -96,7 +96,7 @@ if __name__ == "__main__":
     x = np.arange(len(rbt_sim_means)) # the label locations
     width = 0.25 # the width of the bars
     multiplier = 0
-    fig, ax = plt.subplots(figsize=(num_sim/1.5,5),layout='constrained')
+    fig, ax = plt.subplots(layout='constrained')
 
     for alg, avg_time in alg_means.items():
         offset = width * multiplier
@@ -114,7 +114,7 @@ if __name__ == "__main__":
     plt.savefig('./plots/Sim_Avg_group.jpg')
 
     # ======= Fig 4: Average insertion speed by search algorithm (grouped line) ======= # 
-    plt.figure(4, figsize=(num_sim/1.5,5), layout = 'constrained')
+    plt.figure(4, layout = 'constrained')
     for alg, avg_time in alg_means.items():
         if alg == 'Red-Black':
             color='r'

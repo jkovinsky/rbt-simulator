@@ -10,6 +10,7 @@
 
 
 auto totalTime(auto tms){ 
+	// computes the total time from a series of time intervals
 	auto total = simple_timer::timer<'u'>::interval{0.0};
 
 	for(size_t i = 0; i < tms.size(); ++i)
@@ -21,11 +22,13 @@ auto totalTime(auto tms){
 
 auto avgTime(auto sum, auto tms)
 {
+	// computes the average time from a series of time intervals
 	return sum/tms.size(); 
 }
 
 void showStats(auto tms)
 {
+	// displays stats 
 	std::cout << "total dur: " << totalTime(tms) << '\n';
 	std::cout << "avg insert: " << avgTime(totalTime(tms),tms) << '\n';
 }
@@ -33,10 +36,13 @@ void showStats(auto tms)
 
 int main(int argc, const char* argv[]){
 	
-	std::cout << "rbt>";
-	Py_Initialize();
+	srand(4); // set the seed for generating random numbers
 
-	srand(4);
+	std::cout << "rbt>"; 
+	
+	// take in command line arguments: the optional arg '-v'
+	// makes the program verbose 
+
 	int total_argc = argc - 1;
 
 	if (total_argc == 2)
@@ -45,29 +51,40 @@ int main(int argc, const char* argv[]){
 			Tree::verbose = true; 
 		}
 	}
-	else{ Tree::verbose = false; }
+	else
+	{
+
+		Tree::verbose = false; 
+	}
 	
-	Tree rb_tr; 
-	Tree bs_tr;
+	// construct two instances of trees
+	Tree rb_tr; // red-black tree
+	Tree bs_tr; // binary search tree
 
- 
-	std::vector<Tree> rbt_trees;
-	std::string tree_input;
+ 	// initialize a vector of type Tree
+ 	// to store different red-black trees
+	std::vector<Tree> rbt_trees; 
 
+	// initialize vectors to store insertion speeds
 	std::vector<simple_timer::timer<'u'>::interval> rbt_times;
 	std::vector<simple_timer::timer<'u'>::interval> bst_times;
 
+	// initialize maps to store insertion speeds for each simulation
 	std::map<int, std::vector<simple_timer::timer<'u'>::interval>> sim_rbt_times;
 	std::map<int, std::vector<simple_timer::timer<'u'>::interval>> sim_bst_times;
-	int key = 0; 
+	int key = 0; // start simulation interval from zero
  	
+ 
 	bool quit = false; 
 
-	simple_timer::timer<'u'> tm; 
+	Py_Initialize(); 
+
+	simple_timer::timer<'u'> tm; // timer starts
 	while(!quit)
 	{
 		while(true)
 		{
+			// get user-input
 			std::string action;
 			std::getline(std::cin, action);
 
@@ -168,12 +185,15 @@ int main(int argc, const char* argv[]){
 
 			if (action == ".sim")
 			{
+
 				key += 1;
 				std::vector<simple_timer::timer<'u'>::interval> temp_rbt_times; 
 				std::vector<simple_timer::timer<'u'>::interval> temp_bst_times; 
+
+				// simulate 1000 insertions 
 				for(int i = 0; i < 1000; ++i)
 				{
-					int rand_num = rand() % 100000;
+					int rand_num = rand() % 100000; // in the range 0 to 99999
 					
 					Tree::rbt = true;
 					tm.tick();
@@ -190,14 +210,17 @@ int main(int argc, const char* argv[]){
 					bst_times.push_back(tm_intrvl);
 					temp_bst_times.push_back(tm_intrvl);
 				}
+				// append insertion times 
 				sim_rbt_times.insert({key, temp_rbt_times});
 				sim_bst_times.insert({key, temp_bst_times});
 				std::cout << "rbt>";
 			}
+			// write command will write out insertion times to 
+			// seperate .txt files
 			if (action == ".write")
 			{
 				std::ofstream rbtFile_rt;
-				rbtFile_rt.open ("output/rbt_runtime.txt");
+				rbtFile_rt.open ("output/rbt_runtime.txt"); // for manual insertions
 				for(size_t i = 0; i < rbt_times.size(); ++i)
 				{
 					rbtFile_rt << rbt_times[i];
@@ -209,7 +232,7 @@ int main(int argc, const char* argv[]){
 				rbtFile_rt.close();
 
 				std::ofstream rbtFile_sim;
-				rbtFile_sim.open ("output/rbt_sim.txt");
+				rbtFile_sim.open ("output/rbt_sim.txt"); // for simulated insertions
 
 				for(auto m = sim_rbt_times.begin(); m != sim_rbt_times.end(); ++m)
 				{
@@ -233,7 +256,7 @@ int main(int argc, const char* argv[]){
 				rbtFile_sim.close();
 
 				std::ofstream bstFile_rt;
-				bstFile_rt.open ("output/bst_runtime.txt");
+				bstFile_rt.open ("output/bst_runtime.txt"); // for manual insertions
 				for(size_t i = 0; i < bst_times.size(); ++i)
 				{
 					bstFile_rt << bst_times[i];
@@ -245,7 +268,7 @@ int main(int argc, const char* argv[]){
 				bstFile_rt.close();
 
 				std::ofstream bstFile_sim;
-				bstFile_sim.open ("output/bst_sim.txt");
+				bstFile_sim.open ("output/bst_sim.txt"); // for simulated insertions
 
 				for(auto m = sim_bst_times.begin(); m != sim_bst_times.end(); ++m)
 				{
@@ -270,6 +293,8 @@ int main(int argc, const char* argv[]){
 
 				std::cout << "rbt>";
 			}
+			// plot command will call the plot.py file to 
+			// graph interval times
 			if (action == ".plot")
 			{
 				PyObject * obj = Py_BuildValue("s", "plot.py");

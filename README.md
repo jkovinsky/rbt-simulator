@@ -1,2 +1,3 @@
 ## Red Black Tree
-Compares speed performance between red black and binary search trees
+- Red-black and binary search tree implemention with C++.
+- Python script to compare 

@@ -34,14 +34,12 @@ Install Python dependencies:
 ```bash
 pip install matplotlib
 ```
-## Get Started
+## Commands
 1. CD into red-black-tree
 2. Type `make` into the command line
-3. Tpy ./rbt into the command line
-4. Typical Demo Flow:
-  - .insert: 5,10,15,20
-  - .sim
-  - .compare
-  - .write
-  - .plot
-  - .exit
+3. Tpye ./rbt into the command line
+4. `.insert` to insert a comma seperated list of numbers or `.sim` to simulate 1000 insertions
+6. `.write` to write time values for each search algorithm
+7. `.plot` to see average insertion speeds
+8. `.compare` to see stats in command line
+9. `.exit` to close the app

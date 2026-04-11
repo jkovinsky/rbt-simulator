@@ -35,11 +35,8 @@ Install Python dependencies:
 pip install matplotlib
 ```
 ## Commands
-1. CD into red-black-tree
-2. Type `make` into the command line
-3. Type `./rbt` into the command line
-4. `.insert` to insert a comma seperated list of numbers or `.sim` to simulate 1000 insertions
-6. `.write` to write time values for each search algorithm
-7. `.plot` to see average insertion speeds
-8. `.compare` to see stats in command line
-9. `.exit` to close the app
+1. `.insert` to insert a comma seperated list of numbers or `.sim` to simulate 1000 insertions
+2. `.write` to write time values for each search algorithm
+3. `.plot` to see average insertion speeds
+4. `.compare` to see stats in command line
+5. `.exit` to close the app

@@ -37,7 +37,7 @@ pip install matplotlib
 ## Commands
 1. CD into red-black-tree
 2. Type `make` into the command line
-3. Tpye ./rbt into the command line
+3. Type `./rbt` into the command line
 4. `.insert` to insert a comma seperated list of numbers or `.sim` to simulate 1000 insertions
 6. `.write` to write time values for each search algorithm
 7. `.plot` to see average insertion speeds
